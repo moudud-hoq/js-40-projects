@@ -20,32 +20,160 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
   </head>
-  <body class="container mx-auto">
-    <!-- Nav Start -->
-    <nav>
-      <div class="navbar bg-red-100">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-            </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Homepage</a></li>
-              <li><a>Portfolio</a></li>
-              <li><a>About</a></li>
-            </ul>
+  <body class="container mx-auto p-5 mt-2">
+    <!-- Navbar Start -->
+    <div class="navbar bg-amber-400 rounded-t-xl">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
           </div>
-        </div>
-        <div class="flex-1">
-          <a class="btn btn-ghost text-xl">daisyUI</a>
-        </div>
-        <div class="flex-none">
-          <button class="btn btn-square btn-ghost">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-          </button>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li><a>Homepage</a></li>
+            <li><a>Portfolio</a></li>
+            <li><a>About</a></li>
+          </ul>
         </div>
       </div>
-    </nav>
-    <!-- Nav End -->
+      <div class="navbar-center">
+        <a class="btn btn-ghost text-xl">Color Changer by Vanilla JS</a>
+      </div>
+      <div class="navbar-end">
+        <button class="btn btn-ghost btn-circle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+        <button class="btn btn-ghost btn-circle">
+          <div class="indicator">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+            <span class="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <div
+      id="hero"
+      class="hero min-h-screen rounded-b-xl bg-slate-400"
+      style="background-color: "
+    >
+      <div class="bg-opacity-60"></div>
+      <div class="hero-content text-neutral-content">
+        <div class="max-w-md">
+          <ul class="mb-5 text-black">
+            <h1 class="text-5xl font-bold">Key concepts covered:</h1>
+            <li class="">arrays</li>
+            <li class="">document.getElementById()</li>
+            <li class="">document.querySelector()</li>
+            <li class="">addEventListener()</li>
+            <li class="">document.body.style.backgroundColor</li>
+            <li class="">Math.floor()</li>
+            <li class="">Math.random()</li>
+            <li class="">array.length</li>
+          </ul>
+          <div class="flex items-center flex-col gap-3">
+            <div id="show-the-color-name" class="badge badge-ghost p-5 font-bold">Look here the color name</div>
+            <div>
+              <button id="change-color" class="btn btn-primary">
+                Click Here to do change the BG color
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero End -->
+
+    <!-- JS code here -->
+    <script>
+      // Get the button element
+      var colorChangingButton = document.getElementById("change-color");
+      // Add click event listener to the button
+      colorChangingButton.addEventListener("click", function () {
+        // Get a random color
+        var randomColor = getRandomColor();
+        // Change the background color of the hero element
+        document.getElementById("hero").style.backgroundColor =
+          randomColor.colorCode;
+        // Update the content of the show-the-color-name div with the generated color code and name
+        document.getElementById("show-the-color-name").innerText =
+          randomColor.colorCode + " " + randomColor.colorName;
+      });
+
+      // Function to generate a random color and its name
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF"; // This string contains all the characters that can be used in a hexadecimal color code.
+        var colorCode = "#"; // This initializes the color variable with the '#' symbol, which is used in hexadecimal color codes.
+        var colorName = ""; // Variable to store the color name
+        for (var i = 0; i < 6; i++) {
+          // This loop runs 6 times to generate a 6-character hexadecimal color code.
+          colorCode += letters[Math.floor(Math.random() * 16)]; // In each iteration, a random character from the 'letters' string is added to the 'color' variable.
+          // Math.random() generates a random number between 0 and 1. Multiplying it by 16 gives us a number between 0 and 15.
+          // Math.floor() rounds down the result to the nearest integer, ensuring it's within the range of valid indices for the 'letters' string.
+          // This expression selects a random character from the 'letters' string and adds it to the 'color' variable.
+        }
+        // Color names can be assigned based on the color code or chosen arbitrarily
+        // For simplicity, let's assign some color names based on the generated color code
+        switch (colorCode) {
+          case "#FF0000":
+            colorName = "Red";
+            break;
+          case "#00FF00":
+            colorName = "Green";
+            break;
+          case "#0000FF":
+            colorName = "Blue";
+            break;
+          // Add more cases as needed
+          default:
+            colorName = "";
+        }
+        // Finally, the generated hexadecimal color code and its name are returned.
+        return { colorCode: colorCode, colorName: colorName };
+      }
+    </script>
   </body>
 </html>
